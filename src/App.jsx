@@ -1,26 +1,30 @@
-//import { useState } from 'react'
-//import Evento from './components/Form'
-//import Condicional from './components/Condicional'
-//import Listas from './components/Lista'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
-
-import SeuNome from './components/SeuNome'
+import Evento from './components/Form'
 import './App.css'
-import { useState } from 'react'
-import Saudacao from './components/Saudacao'
+import Home from './pages/Home'
+import Empresa from './pages/Empresa'
+import Contato from './pages/Contato'
+import Navbar from './components/layout/Navbar'
+import Footer from './components/layout/Footer'
 
 function App() {
-  //const [count, setCount] = useState(0)
-  //, {framework: 'X', alunos: 123,}
-  //const meusItens = ['React', 'Vue', 'Angular']  
-  const [nome, setNome] = useState()
 
   return (
-    <div>
-      <h1>State Lift</h1>      
-      <SeuNome setNome={setNome}/>
-      <Saudacao nome={nome}/>
-    </div>   
+    <Router>
+     <Navbar/>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/empresa" element={<Empresa />} />
+        <Route path="/contato" element={<Contato />} />
+      </Routes>
+
+      <main>
+        <Evento/>
+      </main>
+      <Footer />
+
+    </Router>
   )
 }
 
